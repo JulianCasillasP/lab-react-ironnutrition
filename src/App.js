@@ -20,6 +20,13 @@ function App() {
     );
     setFilteredFoodList(filteredFoods); 
   };
+  
+  const handleDelete = (foodToDelete) => {
+    const updatedFoodList = foodList.filter((food) => food !== foodToDelete);
+    setFoodList(updatedFoodList);
+    setFilteredFoodList(updatedFoodList);
+  };
+
 
   return (
     <div>
@@ -28,7 +35,7 @@ function App() {
       <Row gutter={[16, 16]}>
       {filteredFoodList.map((food, index) => (
           <Col span={8} key={index}>
-            <FoodBox food={food} />
+            <FoodBox food={food} onDelete={handleDelete} />
           </Col>
         ))}
       </Row>
